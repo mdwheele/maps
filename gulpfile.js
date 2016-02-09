@@ -16,7 +16,9 @@ gulp.task('sass', function() {
 
     gulp.src(stylesheets)
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass({
+            includePaths: ['node_modules']
+        }).on('error', sass.logError))
         .pipe(sourcemaps.write())
         .pipe(concat('app.min.css'))
         .pipe(gulp.dest('public/css'))
@@ -67,5 +69,5 @@ gulp.task('watch:sass', function() {
 });
 
 gulp.task('compile', ['sass', 'fonts', 'js']);
-gulp.task('watch', ['compile', 'watch:html', 'watch:js', 'watch:sass']);
+gulp.task('watch', ['compile', 'watch:js', 'watch:sass']);
 gulp.task('default', ['compile']);

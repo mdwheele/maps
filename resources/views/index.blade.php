@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Learning VueJS</title>
+    <title>NC State Campus Maps</title>
 
     <link rel="stylesheet" href="/css/app.min.css">
 </head>

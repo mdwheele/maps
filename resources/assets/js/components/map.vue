@@ -1,5 +1,5 @@
 <template>
-    <div id="map" v-el:map></div>
+    <div class="Map" v-el:map></div>
 </template>
 
 <script type="text/babel">
@@ -14,8 +14,8 @@
         methods: {
             createMap() {
                 this.map = new google.maps.Map(this.$els.map, {
-                    zoom: 14,
-                    center: { lat: 42, lng: -85 },
+                    zoom: 16,
+                    center: { lat: 35.782, lng: -78.675 },
                     disableDefaultUI: true,
                 });
             }
@@ -24,4 +24,9 @@
 </script>
 
 <style lang="scss">
+    .Map {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
 </style>

@@ -1,14 +1,16 @@
 <template>
+    <search></search>
     <map></map>
 </template>
 
 <script type="text/babel">
-    import map from './map.vue';
+    import map from './components/map.vue';
+    import search from './components/search.vue';
 
     export default {
         replace: false,
 
-        components: { map },
+        components: { map, search },
 
         methods: {
             init() {
@@ -19,9 +21,4 @@
 </script>
 
 <style lang="scss">
-    #map {
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
 </style>
