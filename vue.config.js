@@ -1,5 +1,8 @@
 module.exports = {
     sass: {
-        includePaths: ['node_modules']
+        includePaths: [
+            'node_modules',
+            'resources/assets/sass'
+        ]
     }
 }

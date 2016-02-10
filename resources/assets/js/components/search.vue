@@ -1,17 +1,17 @@
 <template>
-    <div class="Search" v-show="!active">
+    <div class="Search" v-if="!active">
         <span class="input-group-btn">
-            <button class="btn btn-secondary" type="button"><i class="fa fa-bars"></i></button>
+            <button class="btn btn-secondary" type="button" @click="openMenu"><i class="fa fa-bars"></i></button>
         </span>
-        <input class="Search__input" type="text" v-on:click="toggle" placeholder="Search NC State Maps">
+        <input class="Search__input" type="text" @click="open" placeholder="Search NC State Maps">
         <span class="Search__submit">
-            <button class="btn btn-secondary" v-on:click="toggle" type="button"><i class="fa fa-search"></i></button>
+            <button class="btn btn-secondary" @click="open" type="button"><i class="fa fa-search"></i></button>
         </span>
     </div>
 
-    <div class="SearchOverlay" v-show="active">
-        <form class="SearchOverlay__Form">
-            <input type="text" placeholder="Search...">
+    <div class="SearchOverlay" v-if="active">
+        <form class="SearchOverlay__Form" @submit.prevent="search">
+            <input type="text" v-model="query" placeholder="Search..." v-focus>
         </form>
 
         <div class="SearchOverlay__Content">
@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <span class="SearchOverlay__Close" v-on:click="toggle"><i class="fa fa-times"></i></span>
+        <span class="SearchOverlay__Close" @click="close"><i class="fa fa-times"></i></span>
     </div>
 </template>
 
@@ -51,13 +51,30 @@
     export default {
         data() {
             return {
-                active: false
+                active: false,
+                query: ''
             }
         },
 
         methods: {
-            toggle() {
-                this.active = !this.active;
+            search() {
+                console.info('Searching for ' + this.query);
+                this.close();
+            },
+
+            open() {
+                this.active = true;
+                this.$root.$broadcast('open-search-pressed');
+            },
+
+            close() {
+                this.active = false;
+                this.query = '';
+                this.$root.$broadcast('close-search-pressed');
+            },
+
+            openMenu() {
+                this.$root.$broadcast('open-menu-pressed')
             }
         }
     }
@@ -65,15 +82,20 @@
 
 <style lang="sass" rel="stylesheet/scss">
     @import 'bootstrap/scss/bootstrap';
+    @import "include-media/dist/include-media";
 
     .Search {
         @extend .input-group;
 
         position: absolute;
-        z-index: 999;
+        z-index: 2;
         width: 380px;
         top: 10px;
         left: 10px;
+
+        @include media('<=400px') {
+            width: calc(100% - 20px);
+        }
 
         &__input {
             @extend .form-control;
@@ -109,7 +131,7 @@
         width: 100vw;
         height: 100vh;
         overflow: scroll;
-        z-index: 2;
+        z-index: 3;
         background: rgba(0,0,0,0.65);
 
         &__Close {
@@ -230,6 +252,4 @@
             }
         }
     }
-
-
 </style>

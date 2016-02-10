@@ -1,7 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="A mapping application for NC State University.">
+    <meta name="author" content="NC State University">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
     <title>NC State Campus Maps</title>
 
     <link rel="stylesheet" href="/css/app.min.css">
