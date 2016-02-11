@@ -12,7 +12,8 @@
     "bootstrap": "~4.0.0-alpha.2",
     "font-awesome": "^4.4.0",
     "vue": "^1.0.0",
-    "vue-resource": "^0.1.16"
+    "vue-resource": "^0.1.16",
+    "fastclick": "~1.0.6"
   },
   "devDependencies": {
     "browserify": "^11.2.0",

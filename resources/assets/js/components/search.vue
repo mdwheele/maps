@@ -17,26 +17,14 @@
         <div class="SearchOverlay__Content">
             <div class="SearchOverlay__Column">
                 <h2>People</h2>
-                <a class="SearchOverlay__Media" href="#">
+                <a class="SearchOverlay__Media" href="#" v-for="n in 6" @click="close">
                     <img src="http://placehold.it/50x50" alt="TooltipStylesInspiration"/>
                     <h3>Joshua Page</h3>
-                </a>
-                <a class="SearchOverlay__Media" href="#">
-                    <img src="http://placehold.it/50x50" alt="TooltipStylesInspiration"/>
-                    <h3>Page Halloway</h3>
-                </a>
-                <a class="SearchOverlay__Media" href="#">
-                    <img src="http://placehold.it/50x50" alt="TooltipStylesInspiration"/>
-                    <h3>Andrew Page</h3>
-                </a>
-                <a class="SearchOverlay__Media" href="#">
-                    <img src="http://placehold.it/50x50" alt="TooltipStylesInspiration"/>
-                    <h3>Griffin Page</h3>
                 </a>
             </div>
             <div class="SearchOverlay__Column">
                 <h2>Buildings</h2>
-                <a class="SearchOverlay__Media" href="#" v-for="n in 1">
+                <a class="SearchOverlay__Media" href="#" v-for="n in 6" @click="close">
                     <img src="http://placehold.it/50x50" alt="TooltipStylesInspiration"/>
                     <h3>Page Hall</h3>
                 </a>
@@ -99,6 +87,8 @@
 
         &__input {
             @extend .form-control;
+
+            appearance: none;
 
             font-size: 14px;
             padding: 8px 7px 7px 10px;
