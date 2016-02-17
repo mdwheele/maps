@@ -37,10 +37,9 @@ gulp.task('fonts', function() {
 gulp.task('js', function() {
     browserify({
         entries: './resources/assets/js/main.js',
+        transform: [vueify],
         debug: true
     })
-        .transform(vueify)
-        .transform(partialify)
         .bundle()
         .on('error', function (err) {
             console.log(err.toString());

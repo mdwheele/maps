@@ -5,14 +5,14 @@
 </template>
 
 <script type="text/babel">
-    import map from './components/map.vue';
-    import search from './components/search.vue';
-    import menu from './components/menu.vue';
+    import Map from './components/Map.vue';
+    import Search from './components/Search.vue';
+    import Menu from './components/Menu.vue';
 
     export default {
         replace: false,
 
-        components: { map, search, menu },
+        components: { Map, Search, Menu },
 
         methods: {
             init() {

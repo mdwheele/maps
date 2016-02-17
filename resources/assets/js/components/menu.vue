@@ -5,7 +5,7 @@
             <ul class="nav">
                 <li><a href="#"><i class="fa fa-map-o"></i> Map</a></li>
                 <li><a href="#"><i class="fa fa-building-o"></i> Buildings</a></li>
-                <li><a href="#"><i class="fa fa-users"></i> People</a></li>
+                <li><a href="#"><i class="fa fa-car"></i> Parking</a></li>
                 <li><a href="#"><i class="fa fa-print"></i> Printable Maps</a></li>
             </ul>
         </nav>
@@ -60,10 +60,6 @@
 
         &.active {
             transform: translate(320px, 0);
-
-            @include media('<=400px') {
-                width: 300px;
-            }
         }
 
         &__close {
