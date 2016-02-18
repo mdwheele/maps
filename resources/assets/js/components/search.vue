@@ -132,7 +132,18 @@
 
             ul {
                 list-style: none;
+                padding: 0;
+
+                li {
+                    padding: 10px;
+                    cursor: pointer;
+
+                    i {
+                        padding: 0px 12px;
+                    }
+                }
             }
+
 
         }
     }
