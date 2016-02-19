@@ -1,4 +1,5 @@
 import Fuse from 'fuse.js';
+import Vue from 'vue';
 
 export default {
 
@@ -7,26 +8,31 @@ export default {
      * @return {Object}
      */
     buildingsMatching(term) {
-        var data = require('./data.json').map((current, index, array) => {
-            return {
-                id: current.facilities_id,
-                name: current.display_name,
-                abbr: current.abbreviation,
-                street: current.street
-            }
-        });
-
-        var index = new Fuse(data, {
-            keys: ['name', 'abbr', 'street'],
-            threshold: 0.5
-        });
-
-        var results = index.search(term).slice(0, 10);
-
         return new Promise((resolve, reject) => {
-            // Stubbed to create async behaviour.
-            resolve(results);
-        })
-    }
+            Vue.http.get('https://maps.ncsu.edu/api/buildings', null, {
+                params: {
+                    q: term,
+                    limit: 0
+                }
+            }).then((response) => {
+                var response = response.data;
 
+                var data = response.items.map((current, index, array) => {
+                    return {
+                        id: current.facilities_id,
+                        name: current.display_name,
+                        abbr: current.abbreviation,
+                        street: current.street
+                    }
+                });
+
+                var index = new Fuse(data, {
+                    keys: ['name', 'abbr', 'street'],
+                    threshold: 0.5
+                });
+
+                resolve(index.search(term).slice(0, 10));
+            });
+        });
+    }
 };

@@ -1,8 +1,8 @@
 window.Vue = require('vue');
 Vue.config.debug = true;
 
-var attachFastClick = require('fastclick');
-attachFastClick(document.body);
+Vue.use(require('vue-resource'));
+require('fastclick')(document.body);
 
 // Tip toe,
 // Through the tulips,

@@ -17,7 +17,9 @@
 
         <div class="Search__Suggestions" v-if="active">
             <ul>
-                <li v-for="result in results" @click="close"><i class="fa fa-map-marker"></i> {{ result.name }}</li>
+                <li class="Search__Suggestion" v-for="result in results" @click="close">
+                    <i class="fa fa-map-marker"></i> {{ result.name | truncate 40 }}
+                </li>
             </ul>
         </div>
     </div>
@@ -129,22 +131,31 @@
 
         &__Suggestions {
             background: #fff;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px;
+            border: 1px solid $btn-secondary-border;
+            border-top-color: transparent;
+            width: calc(100% - 2px);
 
             ul {
                 list-style: none;
                 padding: 0;
+                margin: 0;
+            }
+        }
 
-                li {
-                    padding: 10px;
-                    cursor: pointer;
+        &__Suggestion {
+            padding: 10px;
+            cursor: pointer;
 
-                    i {
-                        padding: 0px 12px;
-                    }
-                }
+            i {
+                font-size: 14pt;
+                padding: 0 15px 0 8px;
             }
 
-
+            @include hover {
+                color: #ffffff;
+                background-color: $btn-primary-bg;
+            }
         }
     }
 </style>
